@@ -46,7 +46,7 @@ export default {
         initSnow() {
             let width = this.$refs.ctx.width;
             let height = this.$refs.ctx.height;
-            for (let i = 0; i < 100; i++) {
+            for (let i = 0; i < 150; i++) {
                 this.createSnow(this.canvas, width, height);
             }
         },
@@ -64,28 +64,19 @@ export default {
         play() {
             this.ctx.clearRect(0, 0, this.$refs.ctx.width, this.$refs.ctx.height);
             this.num++;
-            if (this.num % 50) {
-                this.snowList.forEach((item, i) => {
-                    this.$set(item, 'x', item.x + item.speed * item.dir);
-                    this.$set(item, 'y', item.y + item.speed);
-                    this.ctx.drawImage(this.canvas, 0, 0, this.canvas.width, this.canvas.height, item.x, item.y, 50,50);
-                })
-            } else {
-                this.snowList.forEach((item, i) => {
-                    this.$set(item, 'x', item.x + item.speed * item.dir);
-                    this.$set(item, 'y', item.y + item.speed);
-                    this.$set(item, 'dir', Math.random() - 0.5 > 0 ? 1 : -1);
-                    if (item.x > this.$refs.ctx.width || item.x < 0) {
-                        this.snowList.splice(i, 1);
-                        this.createSnow(this.canvas, this.$refs.ctx.width, this.$refs.ctx.height, true);
-                    }
-                    if (item.y > this.$refs.ctx.height) {
-                        this.snowList.splice(i, 1);
-                        this.createSnow(this.canvas, this.$refs.ctx.width, this.$refs.ctx.height, true);
-                    }
-                    this.ctx.drawImage(this.canvas, 0, 0, this.canvas.width, this.canvas.height, item.x, item.y, 50,50);
-                })
-            }
+            this.snowList.forEach((item, i) => {
+                this.$set(item, 'x', item.x + item.speed * Math.sin(this.num / 100) * item.dir);
+                this.$set(item, 'y', item.y + item.speed);
+                if (item.x > this.$refs.ctx.width || item.x < 0) {
+                    this.snowList.splice(i, 1);
+                    this.createSnow(this.canvas, this.$refs.ctx.width, this.$refs.ctx.height, true);
+                }
+                if (item.y > this.$refs.ctx.height) {
+                    this.snowList.splice(i, 1);
+                    this.createSnow(this.canvas, this.$refs.ctx.width, this.$refs.ctx.height, true);
+                }
+                this.ctx.drawImage(this.canvas, 0, 0, this.canvas.width, this.canvas.height, item.x, item.y, 50,50);
+            })
             
         },
         keepChange() {
