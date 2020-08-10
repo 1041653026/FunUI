@@ -3,6 +3,9 @@
     <div class="bg">
       <Background></Background>
     </div>
+    <div class="main">
+      <router-view></router-view>
+    </div>
     <div class="snow">
       <Snow></Snow>
     </div>
@@ -25,6 +28,18 @@ export default {
     Sider,
     Background,
     Snow
+  },
+  mounted() {
+    this.resize();
+    window.addEventListener('resize', this.resize);
+  },
+  beforeDestroy() {
+    window.removeEventListener('resize', this.resize);
+  },
+  methods: {
+    resize() {
+      document.documentElement.style.fontSize = 10 / 1080 * document.body.clientHeight + 'px';
+    }
   }
 }
 </script>
@@ -43,12 +58,21 @@ export default {
   width: 100%;
   height: 100%;
 }
+.main {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
 .snow {
   width: 100%;
   height: 100%;
   position: fixed;
   left: 0;
   padding: 0;
+  pointer-events: none;
+  z-index: 999999999;
 }
 .app-left {
   height: 100%;

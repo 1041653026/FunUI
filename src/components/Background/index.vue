@@ -76,7 +76,7 @@ export default {
 .bg {
     width: 100%;
     height: 100%;
-    opacity: .8;
+    opacity: .5;
     .ctx {
         width: 100%;
         height: 100%;

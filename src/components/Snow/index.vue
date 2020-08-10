@@ -35,7 +35,6 @@ export default {
             img.src = require('@/assets/img/snow.png');
             this.curImg++;
             img.onload = () => {
-                console.log(33333, img.width, img.height)
                 canvas.width = img.width;
                 canvas.height = img.height;
                 cvs.drawImage(img, 0, 0, canvas.width, canvas.height);
@@ -67,7 +66,7 @@ export default {
             this.snowList.forEach((item, i) => {
                 this.$set(item, 'x', item.x + item.speed * Math.sin((this.num + i *2) / 100) * item.dir);
                 this.$set(item, 'y', item.y + item.speed);
-                if (item.x > this.$refs.ctx.width || item.x < 0) {
+                if (item.x > this.$refs.ctx.width || item.x < -50) {
                     this.snowList.splice(i, 1);
                     this.createSnow(this.canvas, this.$refs.ctx.width, this.$refs.ctx.height, true);
                 }
@@ -93,12 +92,14 @@ export default {
 </script>
 
 <style lang='scss' scoped>
-.bg {
+.snow {
     width: 100%;
     height: 100%;
+    pointer-events: none;
     .ctx {
         width: 100%;
         height: 100%;
+        pointer-events: none;
     }
 }
 </style>

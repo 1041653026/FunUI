@@ -5,14 +5,36 @@
             <p>Style record library</p>
         </div>
         <div class="main">
-
+            <fun-nav></fun-nav>
         </div>
     </div>
 </template>
 
 <script>
+import FunNav from '@/fun/FunNav';
+
 export default {
-    name: 'Sider'
+    name: 'Sider',
+    components: {
+        FunNav
+    },
+    data() {
+        return {
+            navList: [{
+                label: '张三',
+                value: '/zhangsan'
+            }, {
+                label: '李四',
+                value: '/lisi'
+            }, {
+                label: '王二',
+                value: '/wanger'
+            }, {
+                label: '史大',
+                value: '/shida'
+            }]
+        }
+    },
 }
 </script>
 
@@ -23,6 +45,7 @@ export default {
     flex-direction: column;
     box-sizing: border-box;
     padding-top: 2rem;
+    user-select:none;
     .logo {
         flex: 1;
         width: 100%;
@@ -56,7 +79,7 @@ export default {
     .main {
         flex: 9;
         width: 100%;
-        background-color: yellow;
+        // background-color: yellow;
     }
 }
 </style>
