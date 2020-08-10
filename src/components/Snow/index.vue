@@ -65,7 +65,7 @@ export default {
             this.ctx.clearRect(0, 0, this.$refs.ctx.width, this.$refs.ctx.height);
             this.num++;
             this.snowList.forEach((item, i) => {
-                this.$set(item, 'x', item.x + item.speed * Math.sin(this.num / 100) * item.dir);
+                this.$set(item, 'x', item.x + item.speed * Math.sin((this.num + i *2) / 100) * item.dir);
                 this.$set(item, 'y', item.y + item.speed);
                 if (item.x > this.$refs.ctx.width || item.x < 0) {
                     this.snowList.splice(i, 1);
