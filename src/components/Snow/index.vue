@@ -13,7 +13,9 @@ export default {
             timer: null,            // 计时器
             snowList: [],           // 雪花数组
             num: 0,                 // 计数器
-            canvas: null            // 离屏渲染canvas
+            canvas: null,           // 离屏渲染canvas
+
+            size: 50                // 雪花大小
         }
     },
     mounted() {
@@ -45,6 +47,7 @@ export default {
         initSnow() {
             let width = this.$refs.ctx.width;
             let height = this.$refs.ctx.height;
+            this.size = 50 / 1920 * width;
             for (let i = 0; i < 150; i++) {
                 this.createSnow(this.canvas, width, height);
             }
@@ -56,8 +59,8 @@ export default {
                 dir: Math.random() - 0.5 > 0 ? 1 : -1,
                 speed: Math.ceil(Math.random() * 3)
             }
-            top && (data.y = -50);
-            this.ctx.drawImage(canvas, 0, 0, canvas.width, canvas.height, data.x, data.y, 50,50);
+            top && (data.y = -this.size);
+            this.ctx.drawImage(canvas, 0, 0, canvas.width, canvas.height, data.x, data.y, this.size,this.size);
             this.snowList.push(data);
         },
         play() {
@@ -66,7 +69,7 @@ export default {
             this.snowList.forEach((item, i) => {
                 this.$set(item, 'x', item.x + item.speed * Math.sin((this.num + i *2) / 100) * item.dir);
                 this.$set(item, 'y', item.y + item.speed);
-                if (item.x > this.$refs.ctx.width || item.x < -50) {
+                if (item.x > this.$refs.ctx.width || item.x < -this.size) {
                     this.snowList.splice(i, 1);
                     this.createSnow(this.canvas, this.$refs.ctx.width, this.$refs.ctx.height, true);
                 }
@@ -74,7 +77,7 @@ export default {
                     this.snowList.splice(i, 1);
                     this.createSnow(this.canvas, this.$refs.ctx.width, this.$refs.ctx.height, true);
                 }
-                this.ctx.drawImage(this.canvas, 0, 0, this.canvas.width, this.canvas.height, item.x, item.y, 50,50);
+                this.ctx.drawImage(this.canvas, 0, 0, this.canvas.width, this.canvas.height, item.x, item.y, this.size,this.size);
             })
             
         },

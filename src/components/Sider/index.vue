@@ -5,7 +5,7 @@
             <p>Style record library</p>
         </div>
         <div class="main">
-            <fun-nav></fun-nav>
+            <fun-nav :list='navList'></fun-nav>
         </div>
     </div>
 </template>
@@ -21,17 +21,23 @@ export default {
     data() {
         return {
             navList: [{
-                label: '张三',
-                value: '/zhangsan'
+                label: '项目概述',
+                route: '/summary'
             }, {
-                label: '李四',
-                value: '/lisi'
+                label: '下拉框',
+                route: '/select'
             }, {
-                label: '王二',
-                value: '/wanger'
+                label: '轮播图',
+                route: '/ccc'
             }, {
-                label: '史大',
-                value: '/shida'
+                label: '图片动画',
+                route: '/animation'
+            }, {
+                label: '数据列表',
+                route: '/datalist'
+            }, {
+                label: '图片框',
+                route: '/pic'
             }]
         }
     },

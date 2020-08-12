@@ -4,7 +4,9 @@
             <Sider></Sider>
         </div>
         <div class="home-right">
-            <router-view></router-view>
+            <div class="main">
+                <router-view></router-view>
+            </div>
         </div>
     </div>
 </template>
@@ -33,8 +35,15 @@ export default {
   width: 20vw;
 }
 .home-right {
-  height: 100%;
-  flex: 1;
-//   background:red;
+    height: 100%;
+    flex: 1;
+    box-sizing: border-box;
+    padding-left: 5vw;
+    .main {
+        width: 60vw;
+        height: 100%;
+        background-color: rgba(255,255,255,.85);
+    }
+    // background:red;
 }
 </style>
