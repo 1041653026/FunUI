@@ -43,6 +43,10 @@ export default {
         width: 60vw;
         height: 100%;
         background-color: rgba(255,255,255,.85);
+        color: #383535cc;
+        box-sizing: border-box;
+        padding-left: 4rem;
+        padding-right: 4rem;
     }
     // background:red;
 }

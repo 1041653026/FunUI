@@ -43,10 +43,15 @@ export default {
     },
     methods: {
         jump(cur) {
-            console.log(cur);
             this.active = cur;
+            this.$router.push(cur)
         }
     },
+    watch: {
+        $route() {
+            this.active = this.$route.path;
+        }
+    }
 }
 </script>
 

@@ -15,6 +15,10 @@ const routes = [
       path: '/summary',
       name: 'summary',
       component: () => import(/* webpackChunkName: "about" */ '@/views/Summary'),
+    }, {
+      path: '/select',
+      name: 'select',
+      component: () => import(/* webpackChunkName: "about" */ '@/views/SelectPage'),
     }]
   },
   // {
