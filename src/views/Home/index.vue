@@ -47,6 +47,30 @@ export default {
         box-sizing: border-box;
         padding-left: 4rem;
         padding-right: 4rem;
+        overflow: auto;
+        scrollbar-face-color:rgb(50, 230, 243);
+        scrollbar-shadow-color:rgb(50, 230, 243);
+        scrollbar-highlight-color:rgb(50, 230, 243);
+        scrollbar-3dlight-color:rgb(50, 230, 243);
+        scrollbar-darkshadow-color:blue;
+        scrollbar-track-color:#F7F7F7;
+        scrollbar-arrow-color:#666666;
+        &::-webkit-scrollbar {
+            width: .3vw;
+        }
+        /* 滚动槽 */
+        &::-webkit-scrollbar-track {
+            display: none;
+        }
+        /* 滚动条滑块 */
+        &::-webkit-scrollbar-thumb {
+            border-radius: 10px;
+            background: linear-gradient(to bottom, rgba(248, 230, 71, 0.5), rgb(50, 230, 243));
+            -webkit-box-shadow: rgb(50, 230, 243);
+        }
+        &::-webkit-scrollbar-thumb:window-inactive {
+            background: rgb(50, 230, 243);
+        }
     }
     // background:red;
 }

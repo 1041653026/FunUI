@@ -1,7 +1,7 @@
 <template>
     <div class='select'>
         <div class="select-title">
-            <Title>
+            <Title size='small'>
                 下拉框Select
                 <template slot='descript'>自定义下拉框组件</template>
             </Title>
@@ -27,7 +27,7 @@ export default {
 <style lang="scss" scoped>
 .select {
     width: 100%;
-    height: 100%;
+    height: 200%;
     .select-title {
         width: 100%;
         height: 14rem;
