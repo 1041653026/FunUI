@@ -38,7 +38,14 @@ export default {
   },
   methods: {
     resize() {
-      document.documentElement.style.fontSize = 10 / 1080 * document.body.clientHeight + 'px';
+      let RATIO, _body = document.body || document.documentElement;
+      if (_body.clientWidth / 1920 > _body.clientHeight / 1080) {
+        RATIO = _body.clientHeight / 1080;
+      } else {
+        RATIO = _body.clientWidth / 1920;
+      }
+      document.documentElement.style.fontSize = 10 * RATIO + 'px';
+      // document.documentElement.style.fontSize = 10 / 1080 * document.body.clientHeight + 'px';
     }
   }
 }

@@ -25,11 +25,24 @@ export default {
         this.$refs.ctx.height = size.height;
         this.loadImg();
         this.keepChange();
+        window.addEventListener('resize', this.changeCanvas);
     },
     beforeDestroy() {
         this.breakKeepChange();
+        window.removeEventListener('resize', this.changeCanvas);
     },
     methods: {
+        changeCanvas() {
+            let RATIO, _body = document.body || document.documentElement;
+            if (_body.clientWidth / 1920 > _body.clientHeight / 1080) {
+                RATIO = _body.clientHeight / 1080;
+            } else {
+                RATIO = _body.clientWidth / 1920;
+            }
+            this.$refs.ctx.width = _body.clientWidth;
+            this.$refs.ctx.height = _body.clientHeight;
+            this.size = 50 * RATIO;
+        },
         loadImg() {
             let canvas = document.createElement('canvas');
             let cvs = canvas.getContext('2d');

@@ -80,7 +80,8 @@ export default {
                 text-align: left;
                 line-height: 3vw;
                 background-image: url('../../assets/img/nav.png');
-                background-size: contain;
+                background-size: 100% 100%;
+                background-repeat: no-repeat;
                 box-sizing: border-box;
                 padding-left: 60%;
                 transition: all .3s ease 0s;
